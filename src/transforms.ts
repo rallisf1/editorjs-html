@@ -97,6 +97,26 @@ const transforms: transforms = {
         );
     }
   },
+
+  table: ({ data }) => {
+    let heading = '';
+    const rows = data.content.map((row, i) => {
+      if(data.withHeadings && i === 0) {
+        heading = `<thead><tr>${row.reduce(
+          (acc, cell) => acc + `<th>${cell}</th>`,
+          ""
+        )}</tr></thead>`;
+        return '';
+      } else {
+        return `<tr>${row.reduce(
+        (acc, cell) => acc + `<td>${cell}</td>`,
+        ""
+        )}</tr>`;
+      }
+    });
+    return `<table>${heading}<tbody>${rows.join("")}</tbody></table>`;
+  },
+
 };
 
 export default transforms;
