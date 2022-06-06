@@ -8,6 +8,7 @@ export type transforms = {
   quote(block: block): string;
   code(block: block): string;
   embed(block: block): string;
+  table(block: block): string;
 };
 
 type ListItem = {
@@ -27,6 +28,7 @@ export type block = {
     };
     stretched?: boolean;
     withBackground?: boolean;
+    withHeadings?: boolean;
     withBorder?: boolean;
     items?: Array<string> | Array<ListItem>;
     style?: string;
@@ -36,6 +38,7 @@ export type block = {
     embed?: string;
     width?: number;
     height?: number;
+    content?: Array<Array<string>>;
   };
 };
 
